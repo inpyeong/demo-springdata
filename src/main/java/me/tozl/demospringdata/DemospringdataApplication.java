@@ -11,4 +11,3 @@ public class DemospringdataApplication {
     }
 
 }
-https://github.com/inpyeong/demo-springdata.git
