@@ -19,6 +19,10 @@ public class Account {
     @OneToMany(mappedBy = "owner")
     private Set<Study> studies = new HashSet<>();
 
+
+
+
+
     /**
      * getter, setter  없어도 멤버들은 컬럼으로 맵핑된다.
      */
