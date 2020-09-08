@@ -1,25 +1,33 @@
 package me.tozl.demospringdata;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
-/**
- * 데이터베이스의 테이블과 맵핑되는 클래스이다.
- *
- * Column 어노테이션 생략해도 테이블의 컬럼으로 등록된다.
- */
 @Entity
 public class Account {
 
     @Id @GeneratedValue
     private Long id;
 
-    @Column
+    @Column(nullable = false, unique = true)
     private String username;
 
     private String password;
+
+    @Temporal(TemporalType.TIME)
+    private Date created = new Date();
+
+    private String yes;
+
+    /**
+     * 컬럼으로 매핑 안하는 어노테이션
+     */
+    @Transient
+    private String no;
+
+    /**
+     * getter, setter  없어도 멤버들은 컬럼으로 맵핑된다.
+     */
 
     public Long getId() {
         return id;
