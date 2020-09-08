@@ -25,6 +25,12 @@ public class Account {
     @Transient
     private String no;
 
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "street", column = @Column(name = "home_street"))
+    })
+    private Address address;
+
     /**
      * getter, setter  없어도 멤버들은 컬럼으로 맵핑된다.
      */
