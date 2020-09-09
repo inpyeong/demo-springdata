@@ -7,6 +7,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -38,6 +39,12 @@ public class CommentRepositoryTest {
         // Then
         assertThat(count).isEqualTo(1);
 
+        // When
+        Optional<Comment> byId = commentRepository.findById(1l);
+
+        // Then
+        assertThat(byId).isEmpty();
+        Comment comment1 = byId.orElseThrow(IllegalArgumentException::new);
     }
 
 }
