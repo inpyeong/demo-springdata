@@ -28,38 +28,13 @@ public class JpaRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        /**
-         * entity 객체 모델 기준으로 작성한다.
-         *
-         * 아래는 JSQL 사용 방법 예이다.
-         *
-         * type-safe query 가 아닌 것이 단점이다.
-         */
-//        TypedQuery<Post> query = entityManager.createQuery("SELECT p from Post AS p", Post.class);
-//        List<Post> posts = query.getResultList();
-//        posts.forEach(System.out::println);
+        Post post = new Post();
+        post.setTitle("spring");
 
-        /**
-         * JSQL 이면서 type-safe query 를 사용하는 법.
-         *
-         * sql 로 변환되서 실행된다.
-         */
-//        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-//        CriteriaQuery<Post> query = builder.createQuery(Post.class);
-//        Root<Post> root = query.from(Post.class);
-//        query.select(root);
-//
-//        List<Post> posts = entityManager.createQuery(query).getResultList();
-//        posts.forEach(System.out::println);
+        Comment comment = new Comment();
+        comment.setComment("hello");
 
-
-        /**
-         * 실제 쿼리문 사용법.
-         */
-//        List<Post> posts = entityManager.createNativeQuery("SELECT * FROM Post", Post.class).getResultList();
-//        posts.forEach(System.out::println);
-
-        postRepository.findAll().forEach(System.out::println);
+        postRepository.save(post);
 
 
     }
