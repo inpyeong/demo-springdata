@@ -18,7 +18,7 @@ public class JpaRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-//
+
 //        Post post = new Post();
 //        post.setTitle("Spring Data JPA 언제 보나...");
 //
@@ -30,8 +30,16 @@ public class JpaRunner implements ApplicationRunner {
 //        comment1.setComment("빨리 보여드릴게요.");
 //        post.addComment(comment1);
 
+
         Session session = entityManager.unwrap(Session.class);
-        Post post = session.get(Post.class, 1L);
-        session.delete(post);
+//        session.save(post);
+        Post post = session.get(Post.class, 4L);
+        System.out.println("===================");
+        System.out.println(post.getTitle());
+
+        post.getComments().forEach(c -> {
+            System.out.println("==============");
+            System.out.println(c.getComment());
+        });
     }
 }
