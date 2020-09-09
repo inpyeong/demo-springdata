@@ -22,29 +22,6 @@ public class CommentRepositoryTest {
     @Test
     public void crud() {
 
-        // Given
-        Comment comment = new Comment();
-        comment.setComment("Hello Comment");
-        commentRepository.save(comment);
-
-        // When
-        List<Comment> all = commentRepository.findAll();
-
-        // Then
-        assertThat(all.size()).isEqualTo(1);
-
-        // When
-        long count = commentRepository.count();
-
-        // Then
-        assertThat(count).isEqualTo(1);
-
-        // When
-        Optional<Comment> byId = commentRepository.findById(1l);
-
-        // Then
-        assertThat(byId).isEmpty();
-        Comment comment1 = byId.orElseThrow(IllegalArgumentException::new);
     }
 
 }
