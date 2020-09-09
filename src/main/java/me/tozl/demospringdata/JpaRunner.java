@@ -1,6 +1,7 @@
 package me.tozl.demospringdata;
 
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -18,8 +19,11 @@ import java.util.List;
 @Transactional
 public class JpaRunner implements ApplicationRunner {
 
-    @PersistenceContext
-    EntityManager entityManager;
+//    @PersistenceContext
+//    EntityManager entityManager;
+
+    @Autowired
+    PostRepository postRepository;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -54,5 +58,9 @@ public class JpaRunner implements ApplicationRunner {
          */
 //        List<Post> posts = entityManager.createNativeQuery("SELECT * FROM Post", Post.class).getResultList();
 //        posts.forEach(System.out::println);
+
+        postRepository.findAll().forEach(System.out::println);
+
+
     }
 }
