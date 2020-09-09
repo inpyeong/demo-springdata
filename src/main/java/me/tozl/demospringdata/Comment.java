@@ -13,7 +13,7 @@ public class Comment {
     @ManyToOne(fetch = FetchType.EAGER)
     private Post post;
 
-    private Integer likeCount;
+    private Integer likeCount = 0;
 
     public Integer getLikeCount() {
         return likeCount;
