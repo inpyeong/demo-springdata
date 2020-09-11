@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.repository.query.QueryLookupStrategy;
 
 @SpringBootApplication
-
+@EnableJpaRepositories(repositoryBaseClass = MyRepository2Impl.class)
 /**
  * @EnableJpaRepositories
  *
